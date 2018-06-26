@@ -6,14 +6,22 @@ foreach ($films as $key => $film) {
 	<div class="card mb-20 pt-20">
 		<div class="row">
 			<div class="col-auto">
-				<img src="<?=HOST?>data/films/01.jpg" alt="<?=$film['title']?>">
+				<img src="<?=HOST?>data/films/min/<?=$film['photo']?>" alt="<?=$film['title']?>">
 			</div>
 			<div class="col">
 				<div class="card__header">
 					<h4 class="title-4"><?=$film['title']?></h4>
 					<div>
-						<a href="edit.php?id=<?=$film['id']?>" class="button--edit">Редактировать</a>
-						<a href="?action=delete&id=<?=$film['id']?>" class="button--delete">Удалить</a>
+
+						<?php  
+						if( isAdmin() ){ 
+							?>
+							<a href="edit.php?id=<?=$film['id']?>" class="button--edit">Редактировать</a>
+							<a href="?action=delete&id=<?=$film['id']?>" class="button--delete">Удалить</a>
+							<?php
+						}
+						?>
+						
 					</div>
 				</div>
 				<div class="badge"><?=$film['genre']?></div>
